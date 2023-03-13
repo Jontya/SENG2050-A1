@@ -21,7 +21,7 @@ public class Booking extends HttpServlet{
         out.println("Address: <input type='text' name='address'/> <br/>");
         out.println("Email: <input type='text' name='email'/> <br/>");
         out.println("<input type='submit'/>");
-        out.println("<input type='clear'/>");
+        out.println("<input type='reset' value='Clear'/>");
         out.println("</form>");
 
         out.println("</body>");
@@ -29,11 +29,18 @@ public class Booking extends HttpServlet{
         out.close();
     }
 
-    public void doPost(HttpServletRequest request, HttpResponse response){
+    public void doPost(HttpServletRequest request, HttpServletResponse response){
         String name = request.getParameter("name");
         String phone = request.getParameter("phone");
         String address = request.getParameter("address");
         String email = request.getParameter("email");
+
+        if(validateEmail(email) && validateName(name)){
+            // Input data to file and return to home page
+        }
+        else{
+            // Error and return to booking page
+        }
     }
 
     public boolean validateName(String name){
