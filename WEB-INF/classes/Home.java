@@ -17,23 +17,20 @@ public class Home extends HttpServlet{
         PrintWriter out = response.getWriter();
         out.println("<!DOCTYPE html>");
         out.println("<html>");
-        out.println("<head>");
-        out.println("<title>Home</title>");
-        out.println("</head>");
-        out.println("<body>");
-
-        out.println("<h1>Home</h1>");
-
-        out.println(generateNewTable(currWeek, bookingFile));
-
-        out.println("</body>");
+            out.println("<head>");
+                out.println("<title>Home</title>");
+                out.println("<link rel='stylesheet' href='" + request.getContextPath() + "/styling.css' type='text/css'>");
+            out.println("</head>");
+            out.println("<body class='home-container'>");
+                out.println("<h1 class='web-header'>Home</h1>");
+                out.println(generateNewTable(currWeek, bookingFile));
+            out.println("</body>");
         out.println("</html>");
         out.close();
     }
 
     // Sample Booking Input = week, day, time, name
     public String generateNewTable(int currWeek, File bookingFile){
-        String out  = "";
         ArrayList<String> bookings = new ArrayList<>();
 
         try{
@@ -48,9 +45,33 @@ public class Home extends HttpServlet{
         }
         catch(Exception e){}
 
+        String out = "<div class='calender-cols'>";
+        out  += "<div class='calender-time' id='blank'>T</div>";
+        int hour = 6;
+        String currTime = "";
+        for(int i = 0; i < 25; i++){
+            if(i%2 == 0){
+                // even
+                currTime = hour + ":00";
+            }
+            else{
+                // odd
+                currTime = hour + ":30";
+                hour++;
+            }
+     
+            out += "<div class='calender-time'>" + currTime + "</div>";
+        }
+        out += "</div>";
+
         String[] dayNames = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
         for(int i = 0; i < 7; i++){
-            out += "<div style='display: inline-grid;'>" + dayNames[i] + "  " + bookings.size() + "</div>";
+            out += "<div class='calender-cols'>";
+            out += "<div class='calender-days'>" + dayNames[i] + "</div>";
+            for(int x = 0; x < 25; x++){
+                out += "<div class='calender-apt'></div>";
+            }
+            out += "</div>";
         }
         return out;
     }

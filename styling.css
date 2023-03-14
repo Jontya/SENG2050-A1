@@ -1,0 +1,51 @@
+html{
+    font-size: 16px;
+    line-height: 1.6;
+    background-color: #252a34;
+    color: #eaeaea;
+    font-family: -apple-system,BlinkMacSystemFont,"Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
+}
+
+.web-header{
+    text-align: center;
+    color: aquamarine;
+}
+
+.home-container{
+    margin-inline: auto;
+    width: min(90%, 90%);
+    height: auto;
+}
+
+.calender-cols{
+    display: inline-grid;
+}
+
+.calender-days, .calender-time, .calender-apt{
+    text-align: center;
+    display: grid;
+    background-color: #eaeaea;
+    color: #252a34;
+    border: 1px solid;
+}
+
+#blank{
+    background-color: #252a34;
+    color: #252a34;
+    height: 30px;
+}
+
+.calender-days{
+    height: 30px;
+    width: 100px;
+}
+
+.calender-time{
+    height: 20px;
+    width: 50px;
+}
+
+.calender-apt{
+    height: 20px;
+    width: 100px;
+}
